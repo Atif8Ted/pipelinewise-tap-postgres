@@ -96,7 +96,7 @@ JOIN pg_catalog.pg_namespace n
   ON n.oid = pg_class.relnamespace
 LEFT OUTER JOIN pg_index as i
   ON a.attrelid = i.indrelid
- AND a.attnum = ANY(i.indkey)
+ AND a.attnum  in (i.indkey)
  AND i.indisprimary = true
 LEFT OUTER JOIN pg_type AS subpgt
   ON pgt.typelem = subpgt.oid
